@@ -9,14 +9,14 @@ install_git() {
     git version >/dev/null
     if [ $? -ne 0 ]; then
         brew install git
+        git config --global user.email "yuenzhewei@gmail.com"
+        git config --global user.email "YUANZHEWEI"
     fi
-    git config --global user.email "yuenzhewei@gmail.com"
-    git config --global user.email "YUANZHEWEI"
 }
 
 install_zsh() {
-    ZSH=$(cat /etc/shells | grep zsh)
-    if [ -z "$ZSH" ]; then
+    ZSH_R=$(cat /etc/shells | grep zsh)
+    if [ -z "$ZSH_R" ]; then
         brew install zsh
         chsh -s /bin/zsh
     fi
@@ -35,11 +35,29 @@ install_oh_my_zsh() {
 }
 
 install_vimrc() {
-    mkdir -p ~/z
-    cd ~/z
-    git clone https://github.com/YuanZhewei/vimrc.git
-    cd vimrc
-    sh install.sh
+    if [ ! -d ~/z/vimrc ]; then
+        mkdir -p ~/z
+        cd ~/z
+        git clone https://github.com/YuanZhewei/vimrc.git
+        cd vimrc
+        sh install.sh
+    fi
+}
+
+check_and_install() {
+    if [ ! -d "$1" ]; then
+        brew cask install $2
+    fi
+}
+
+install_cask_software() {
+    check_and_install '/Applications/Google Chrome.app' google-chrome
+    check_and_install '/Applications/MacVim.app' macvim
+    check_and_install '/Applications/Alfred 3.app' alfred
+    check_and_install '/Applications/iTerm.app' iterm2
+    check_and_install '/Applications/ShadowsocksX.app' shadowsocksx
+    check_and_install '/Applications/Caffeine.app' caffeine
+    check_and_install '/Applications/Itsycal.app' itsycal
 }
 
 install_brew
@@ -52,5 +70,4 @@ install_oh_my_zsh
 
 install_vimrc
 
-#todo install dmg
-#todo get lastest macvim
+install_cask_software
