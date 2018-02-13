@@ -44,20 +44,26 @@ install_vimrc() {
     fi
 }
 
-check_and_install() {
+check_and_cask_install() {
     if [ ! -d "$1" ]; then
         brew cask install $2
     fi
 }
 
+install_console_software() {
+    brew install wget
+    brew install tree
+    brew install global
+}
+
 install_cask_software() {
-    check_and_install '/Applications/Google Chrome.app' google-chrome
-    check_and_install '/Applications/MacVim.app' macvim
-    check_and_install '/Applications/Alfred 3.app' alfred
-    check_and_install '/Applications/iTerm.app' iterm2
-    check_and_install '/Applications/ShadowsocksX.app' shadowsocksx
-    check_and_install '/Applications/Caffeine.app' caffeine
-    check_and_install '/Applications/Itsycal.app' itsycal
+    check_and_cask_install '/Applications/Google Chrome.app' google-chrome
+    check_and_cask_install '/Applications/MacVim.app' macvim
+    check_and_cask_install '/Applications/Alfred 3.app' alfred
+    check_and_cask_install '/Applications/iTerm.app' iterm2
+    check_and_cask_install '/Applications/ShadowsocksX.app' shadowsocksx
+    check_and_cask_install '/Applications/Caffeine.app' caffeine
+    check_and_cask_install '/Applications/Itsycal.app' itsycal
 }
 
 install_brew
@@ -69,5 +75,7 @@ install_zsh
 install_oh_my_zsh
 
 install_vimrc
+
+install_console_software
 
 install_cask_software
