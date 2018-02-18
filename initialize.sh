@@ -54,6 +54,7 @@ install_console_software() {
     brew install wget
     brew install tree
     brew install global
+    brew install cloc
 }
 
 install_cask_software() {
@@ -64,6 +65,7 @@ install_cask_software() {
     check_and_cask_install '/Applications/ShadowsocksX.app' shadowsocksx
     check_and_cask_install '/Applications/Caffeine.app' caffeine
     check_and_cask_install '/Applications/Itsycal.app' itsycal
+    check_and_cask_install '/Applications/Skim.app' skim
 }
 
 install_brew
