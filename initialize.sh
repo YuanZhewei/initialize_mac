@@ -30,6 +30,8 @@ install_oh_my_zsh() {
         echo 'export GOPATH=~/go' >> ~/.zshrc
         echo 'export PATH=/Applications/MacVim.app/Contents/bin:$PATH' >> ~/.zshrc
         echo 'export PATH=$PATH:$GOPATH/bin' >> ~/.zshrc
+        echo "alias proxy='export all_proxy=socks5://127.0.0.1:1080'" >> ~/.zshrc
+        echo "alias unproxy='unset all_proxy'" >> ~/.zshrc
     fi
     source ~/.zshrc
 }
@@ -55,6 +57,7 @@ install_console_software() {
     brew install tree
     brew install global
     brew install cloc
+    brew install lrzsz
 }
 
 install_cask_software() {
