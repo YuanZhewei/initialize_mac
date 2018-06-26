@@ -32,12 +32,13 @@ install_apt() {
 }
 
 install_apt openssh-server
-install_opt lrzsz
+install_apt lrzsz
 install_apt git
 install_apt cmake
 install_apt python
 install_apt python-dev
 install_apt ddd
+install_apt vim
 
 install_zsh
 install_oh_my_zsh
