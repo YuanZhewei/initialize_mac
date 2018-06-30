@@ -22,9 +22,9 @@ install_prerequisite() {
 }
 
 install_mysql() {
-    cd z
+    cd ~/z
     git clone https://github.com/mysql/mysql-server.git
-    cd mysq-server
+    cd mysql-server
     git checkout 5.7
     cmake -DCMAKE_INSTALL_PREFIX=/usr/local/mysql -DMYSQL_UNIX_ADDR=/tmp/mysql.sock -DDEFAULT_CHARSET=utf8 -DDEFAULT_COLLATION=utf8_general_ci -DWITH_INNOBASE_STORAGE_ENGINE=1 -DWITH_BLACKHOLE_STORAGE_ENGINE=1 -DENABLED_LOCAL_INFILE=1 -DMYSQL_DATADIR=/var/mysql/data -DSYSCONFDIR=/etc -DMYSQL_TCP_PORT=3306 -DEXTRA_CHARSETS=all -DMYSQL_USER=_mysql -DDOWNLOAD_BOOST=1 -DWITH_BOOST=system -DWITH_DEBUG=1
     make
@@ -39,3 +39,7 @@ initialize_mysql() {
     cd /usr/local/mysql
     bin/mysqld --initialize --user=mysql --initialize-insecure
 }
+
+install_prerequisite
+install_mysql
+initialize_mysql
